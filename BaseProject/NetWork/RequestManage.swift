@@ -18,12 +18,18 @@ class RequestManage {
     
     fileprivate let afManager = AFHTTPSessionManager()
     
+    fileprivate var head = [String: String]() //请求头
+    
     init() {
         afManager.responseSerializer = AFJSONResponseSerializer()
         afManager.responseSerializer.acceptableContentTypes = NSSet(objects: "text/plain", "text/json", "application/json","text/javascript","text/html", "application/javascript", "text/js") as? Set<String>
         
         afManager.requestSerializer = AFHTTPRequestSerializer()
         afManager.requestSerializer.timeoutInterval = 20 //请求延时
+        
+        //请求头
+        head["Content-Type"] = "application/json"
+        
     }
     
     //AFNetworking请求
