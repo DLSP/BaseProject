@@ -21,11 +21,13 @@ class RequestManage {
     fileprivate var head = [String: String]() //请求头
     
     init() {
-        afManager.responseSerializer = AFJSONResponseSerializer()
-        afManager.responseSerializer.acceptableContentTypes = NSSet(objects: "text/plain", "text/json", "application/json","text/javascript","text/html", "application/javascript", "text/js") as? Set<String>
+        let responseSerializer = AFJSONResponseSerializer()
+        responseSerializer.acceptableContentTypes = NSSet(objects: "text/plain", "text/json", "application/json","text/javascript","text/html", "application/javascript", "text/js") as? Set<String>
+        afManager.responseSerializer = responseSerializer
         
-        afManager.requestSerializer = AFHTTPRequestSerializer()
-        afManager.requestSerializer.timeoutInterval = 20 //请求延时
+        let requestSerializer = AFHTTPRequestSerializer()
+        requestSerializer.timeoutInterval = 20 //请求延时
+        afManager.requestSerializer = requestSerializer
         
         //请求头
         head["Content-Type"] = "application/json"
