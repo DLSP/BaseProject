@@ -22,7 +22,8 @@ class RequestManage {
     
     init() {
         let responseSerializer = AFJSONResponseSerializer()
-        responseSerializer.acceptableContentTypes = NSSet(objects: "text/plain", "text/json", "application/json","text/javascript","text/html", "application/javascript", "text/js") as? Set<String>
+        responseSerializer.acceptableContentTypes = Set.init(arrayLiteral: "text/plain", "text/json", "application/json","text/javascript","text/html", "application/javascript", "text/js")
+        //NSSet(objects: "text/plain", "text/json", "application/json","text/javascript","text/html", "application/javascript", "text/js") as? Set<String>
         afManager.responseSerializer = responseSerializer
         
         let requestSerializer = AFHTTPRequestSerializer()
